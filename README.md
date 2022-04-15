@@ -1,4 +1,5 @@
 # Laravel Fillable Generator
+[![Total Downloads](https://img.shields.io/packagist/dt/adetxt/laravel-fillable-generator.svg?style=flat-square)](https://packagist.org/packages/adetxt/laravel-fillable-generator)
 
 This package provides a laravel artisan command to generate model fillable automaticly.
 
