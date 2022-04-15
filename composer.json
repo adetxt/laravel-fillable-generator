@@ -1,0 +1,28 @@
+{
+    "name": "adetxt/laravel-fillable-generator",
+    "description": "Generate model fillable automaticly",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Adetxt\\LaravelFillableGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adeardo Dora Harnanda",
+            "email": "adetxt151@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "nette/php-generator": "^3.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Adetxt\\LaravelFillableGenerator\\ServiceProvider"
+            ]
+        }
+    }
+}
