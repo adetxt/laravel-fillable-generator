@@ -19,14 +19,15 @@ class GenerateModelFillable extends Command
     protected $signature = 'generate-model-fillable
                             {names?*}
                             {--P|path : Model path (default: app\Models)}
-                            {--E|excludecol=id,created_at,updated_at,deleted_at : Exclude column}';
+                            {--all-columns : Include all columns}
+                            {--exclude=id,created_at,updated_at,deleted_at : Exclude columns (comma separated)}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate model fillable from database table';
+    protected $description = 'Generate model fillable from mysql database table';
 
     /**
      * Create a new command instance.
@@ -48,8 +49,6 @@ class GenerateModelFillable extends Command
         $names = $this->argument('names');
         $error = 0;
         $success = 0;
-
-        $excludecol = explode(',', $this->option('excludecol'));
 
         $path = $this->option('path');
         $path = empty($path) ? app_path('Models') : $path;
@@ -73,7 +72,7 @@ class GenerateModelFillable extends Command
 
         foreach ($names as $name) {
             try {
-                $this->syncModelFillable($name, $path, $excludecol);
+                $this->syncModelFillable($name, $path);
 
                 $this->info($name . ' generated');
                 $success++;
@@ -88,8 +87,14 @@ class GenerateModelFillable extends Command
         return 0;
     }
 
-    public function syncModelFillable($model_name, $path, $excludecol)
+    public function syncModelFillable($model_name, $path)
     {
+        $excludecol = explode(",", $this->option('exclude'));
+
+        if ($this->option('all-columns')) {
+            $excludecol = [];
+        }
+
         $fileName = $path . '/' . $model_name . '.php';
 
         $class = PhpFile::fromCode(file_get_contents($fileName));
