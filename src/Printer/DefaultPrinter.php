@@ -6,7 +6,7 @@ use Nette\PhpGenerator\Printer;
 
 class DefaultPrinter extends Printer
 {
-    protected $indentation = "    ";
-    protected $linesBetweenProperties = 1;
-    protected $linesBetweenMethods = 1;
+    public string $indentation = "    ";
+    public int $linesBetweenProperties = 1;
+    public int $linesBetweenMethods = 1;
 }
