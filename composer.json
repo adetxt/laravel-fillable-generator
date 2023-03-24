@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "nette/php-generator": "^3.6"
+        "nette/php-generator": "^4.0.6"
     },
     "extra": {
         "laravel": {
